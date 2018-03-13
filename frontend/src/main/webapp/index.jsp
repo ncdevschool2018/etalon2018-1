@@ -11,6 +11,6 @@
     <title>Title</title>
   </head>
   <body>
- <h1> Welcom to etalon 2018 project</h1>
+ <h1> Welcom to etalon 2018 project!</h1>
   </body>
 </html>
