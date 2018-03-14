@@ -12,15 +12,15 @@
     <url>http://maven.apache.org</url>
 
 
-    <modules>
-        <module>backend</module>
-        <module>frontend</module>
-    </modules>
-
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <modules>
+        <module>backend</module>
+        <module>frontend</module>
+    </modules>
 
     <dependencies>
         <dependency>
