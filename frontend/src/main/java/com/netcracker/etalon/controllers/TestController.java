@@ -23,12 +23,28 @@
  */
 package com.netcracker.etalon.controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 /**
  * @author anpi0316
  *         Date: 04.03.2018
  *         Time: 14:44
  */
+@Controller
 public class TestController {
+
+    private static final String VIEW_NAME_LOGIN = "login";
+
+    @RequestMapping(value = "/login-page", method = RequestMethod.GET)
+    public ModelAndView getUsersAsModelWithView() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(VIEW_NAME_LOGIN);
+        return modelAndView;
+    }
+
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,
