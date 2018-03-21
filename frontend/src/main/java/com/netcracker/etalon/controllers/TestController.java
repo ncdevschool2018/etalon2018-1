@@ -26,6 +26,7 @@ package com.netcracker.etalon.controllers;
 import com.netcracker.etalon.models.UserViewModel;
 import org.apache.commons.logging.impl.NoOpLog;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,10 +55,17 @@ public class TestController {
         modelAndView.addObject(MODEL_USERS, getStubUsers());
         return modelAndView;
     }
-    @RequestMapping(value = "/usersAsJson", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public List<UserViewModel> getUsersAsJson() {
         return getStubUsers();
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @ResponseBody
+    public UserViewModel getUsersAsJson(@RequestBody UserViewModel userViewModel) {
+        return userViewModel;
     }
 
     private List<UserViewModel> getStubUsers() {

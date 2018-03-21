@@ -64,6 +64,21 @@
         </div>
     </div>
 
+    <br>
+    <br>
+    Sending Data on server:
+    <div class="form-inline">
+        <label class="sr-only" for="inlineFormInputId">Id</label>
+        <input type="text" class="form-control mb-2 mr-sm-2 jsInputId" id="inlineFormInputId" placeholder="001">
+        <label class="sr-only" for="inlineFormInputName">Name</label>
+        <input type="text" class="form-control mb-2 mr-sm-2 jsInputName" id="inlineFormInputName" placeholder="Tom">
+
+        <button  class="btn btn-primary mb-2 jsSendData">Send data</button>
+    </div>
+
+    <br>
+    <div class="jsAddedUser">
+    </div>
 </div>
 </body>
 </html>
