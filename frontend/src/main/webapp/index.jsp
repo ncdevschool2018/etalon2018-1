@@ -14,6 +14,6 @@
     <title></title>
   </head>
   <body>
-    <c:redirect url = "/login-page"/>
+    <c:redirect url = "/users-view"/>
   </body>
 </html>

@@ -11,11 +11,10 @@
 <head>
     <title>Login page</title>
 </head>
-<script src="resources/js/libs/jquery-3.2.1.min.js"></script>
+<jsp:include page="/jsp/blocks/js-sources-links.jsp"/>
 
 <script src="resources/js/custom/login.js"></script>
 <body>
-<jsp:include page="/jsp/blocks/header.jsp"/>
 
 <div class="container">
     <jsp:include page="/jsp/blocks/title.jsp">
@@ -49,7 +48,21 @@
         <div class="col"></div>
     </div>
     <br>
-
+    <div>
+        <h3>Printing data using model and view</h3>
+        <div class="jsDataUsingModelAndView">
+            <c:if test="${not empty users}">
+                <c:forEach items="${users}" var="users">
+                    ${users.id} | ${users.name} <br>
+                </c:forEach>
+            </c:if>
+        </div>
+    </div>
+    <div>
+        <h3>Printing data using js & ajax</h3>
+        <div class="jsDataUsingAjax">
+        </div>
+    </div>
 
 </div>
 </body>
