@@ -23,8 +23,12 @@
  */
 package com.netcracker.etalon.controllers;
 
+import com.netcracker.etalon.entities.UserEntity;
 import com.netcracker.etalon.models.UserViewModel;
+import com.netcracker.etalon.services.SpecialityService;
+import com.netcracker.etalon.services.UserService;
 import org.apache.commons.logging.impl.NoOpLog;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +47,10 @@ import java.util.List;
 @Controller
 public class TestController {
 
+    @Autowired
+    private UserService userService;
+
+
     private static final String VIEW_NAME_LOGIN = "login";
     private static final String MODEL_USERS = "users";
 
@@ -52,33 +60,20 @@ public class TestController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(VIEW_NAME_LOGIN);
-        modelAndView.addObject(MODEL_USERS, getStubUsers());
+        modelAndView.addObject(MODEL_USERS, userService.findAllStudents());//Todo create converters for view models
         return modelAndView;
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
-    public List<UserViewModel> getUsersAsJson() {
-        return getStubUsers();
+    public List<UserEntity> getUsersAsJson() {
+        return userService.findAllStudents();//Todo create converters for view models
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     @ResponseBody
     public UserViewModel getUsersAsJson(@RequestBody UserViewModel userViewModel) {
         return userViewModel;
-    }
-
-    private List<UserViewModel> getStubUsers() {
-        List<UserViewModel> userViewModels = new ArrayList<>();
-        UserViewModel userViewModelIvan  = new UserViewModel();
-        userViewModelIvan.setId("113");
-        userViewModelIvan.setName("Ivan");
-        UserViewModel userViewModelLeopold = new UserViewModel();
-        userViewModelLeopold.setId("114");
-        userViewModelLeopold.setName("Leopold");
-        userViewModels.add(userViewModelIvan);
-        userViewModels.add(userViewModelLeopold);
-        return userViewModels;
     }
 }
 /*

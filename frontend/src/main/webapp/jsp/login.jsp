@@ -53,7 +53,7 @@
         <div class="jsDataUsingModelAndView">
             <c:if test="${not empty users}">
                 <c:forEach items="${users}" var="users">
-                    ${users.id} | ${users.name} <br>
+                    ${users.id} | ${users.firstname} | ${users.lastname} | Student group : ${users.student.group} <br>
                 </c:forEach>
             </c:if>
         </div>

@@ -47,7 +47,8 @@ $(document).ready(function () {
         success: function (users) {
             users ? function () {
                 users.some(function (user) {
-                    $usersContainer.append('<span>' + user.id + ' | ' + user.name + '</span>')
+
+                    $usersContainer.append('<br><span>' + user.id + ' | ' + user.firstname + ' | ' + user.lastname + ' | ' + user.student.group  + '</span>')
                 });
             }() : false;
         }

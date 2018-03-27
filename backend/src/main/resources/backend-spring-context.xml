@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+
+    <!--@Transaction annotation support -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+    <bean id="jpaDialect"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+    <!-- EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan"
+                  value="com.netcracker.etalon.entities"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            </props>
+        </property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test_base?serverTimezone=UTC"/>
+        <property name="username" value="root"/>
+        <property name="password" value="Etalon2018_"/>
+    </bean>
+
+    <!--Activates various annotations to be detected in bean classes: Spring's @Required and @Autowired and so on-->
+    <context:annotation-config/>
+
+    <!--Scanning components in base-package (look for annotations) -->
+    <context:component-scan base-package="com.netcracker.etalon.entities"/>
+    <context:component-scan base-package="com.netcracker.etalon.services.impl"/>
+
+    <!-- Need for Repository abstraction -->
+    <jpa:repositories base-package="com.netcracker.etalon.repository" entity-manager-factory-ref="entityManagerFactory"
+                      transaction-manager-ref="transactionManager"/>
+
+</beans>
