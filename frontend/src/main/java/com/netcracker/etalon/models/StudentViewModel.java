@@ -21,24 +21,73 @@
  * United States of America
  * All rights reserved.
  */
-package com.netcracker.etalon.repository;
+package com.netcracker.etalon.models;
 
-import com.netcracker.etalon.entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author anpi0316
- *         Date: 27.03.2018
- *         Time: 18:22
+ *         Date: 11.10.2017
+ *         Time: 15:18
  */
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+public class StudentViewModel extends UserViewModel {
 
-    List<UserEntity> findByUsername(String firstName);
-    List<UserEntity> findByUsernameAndPassword(String firstName, String password);
-    List<UserEntity> findByRole(String role);
+    private String studentId;
+    private String group;
+    private String specialityName;
+    private String facultyName;
+    private String facultyId;
+    private String specialityId;
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getSpecialityName() {
+        return specialityName;
+    }
+
+    public void setSpecialityName(String specialityName) {
+        this.specialityName = specialityName;
+    }
+
+    public String getSpecialityId() {
+        return specialityId;
+    }
+
+    public void setSpecialityId(String specialityId) {
+        this.specialityId = specialityId;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public String getFacultyId() {
+        return facultyId;
+    }
+
+    public void setFacultyId(String facultyId) {
+        this.facultyId = facultyId;
+    }
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,

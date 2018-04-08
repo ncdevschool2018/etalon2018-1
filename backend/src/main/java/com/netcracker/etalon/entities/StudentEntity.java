@@ -8,7 +8,7 @@ import java.util.Objects;
 public class StudentEntity {
     private int id;
     private String group;
-
+    private SpecialityEntity speciality;
     @Id
     @Column(name = "id")
     public int getId() {
@@ -27,6 +27,16 @@ public class StudentEntity {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "speciality_id", referencedColumnName = "id", nullable = false)
+    public SpecialityEntity getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(SpecialityEntity speciality) {
+        this.speciality = speciality;
     }
 
     @Override

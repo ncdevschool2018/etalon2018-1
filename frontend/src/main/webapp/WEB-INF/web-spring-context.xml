@@ -14,6 +14,7 @@
 
     <context:component-scan base-package="com.netcracker.etalon.controllers" />
     <import resource="classpath:backend-spring-context.xml"/>
+    <import resource="web-converters-context.xml"/>
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

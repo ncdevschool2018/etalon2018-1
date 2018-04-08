@@ -48,21 +48,21 @@
         <div class="col"></div>
     </div>
     <br>
-    <div>
-        <h3>Printing data using model and view</h3>
-        <div class="jsDataUsingModelAndView">
-            <c:if test="${not empty users}">
-                <c:forEach items="${users}" var="users">
-                    ${users.id} | ${users.firstname} | ${users.lastname} | Student group : ${users.student.group} <br>
-                </c:forEach>
-            </c:if>
-        </div>
-    </div>
-    <div>
-        <h3>Printing data using js & ajax</h3>
-        <div class="jsDataUsingAjax">
-        </div>
-    </div>
+    <table   data-pagination="true" data-search="true" data-toggle="table" class="jsStudentsTable">
+
+        <thead>
+        <tr>
+            <th data-checkbox="true" class="bs-checkbox"><input name="btSelectAll" type="checkbox"></th>
+            <th data-field="firstName">First Name</th>
+            <th data-field="lastName">Last Name</th>
+            <th data-field="email">Email</th>
+            <th data-field="username">Username</th>
+            <th data-field="group">Group</th>
+            <th data-field="specialityName">Speciality</th>
+            <th data-field="facultyName">Faculty</th>
+        </tr>
+        </thead>
+    </table >
 
     <br>
     <br>

@@ -8,12 +8,18 @@ $(document).ready(function () {
         INPUT_ID: '.jsInputId',
         INPUT_NAME: '.jsInputName',
         SEND_DATA_BTN: '.jsSendData',
+        STUDENTS_TABLE: '.jsStudentsTable',
         CONTAINER_ADDED_USER: '.jsAddedUser'
     };
 
     var $usersContainer = $(ELEMENTS.CONTAINER_DATA_USING_AJAX),
         $addedUserContainer = $(ELEMENTS.CONTAINER_ADDED_USER),
+        $studentsTable = $(ELEMENTS.STUDENTS_TABLE),
         $sendDataBtn = $(ELEMENTS.SEND_DATA_BTN);
+
+    function sorting(A){
+        alert(A);
+    }
 
     $sendDataBtn.click(function (event) {
         event.stopPropagation();
@@ -37,22 +43,20 @@ $(document).ready(function () {
         });
     });
 
+// bootstrap-table documentation http://bootstrap-table.wenzhixin.net.cn/documentation
     $.ajax({
-        url: 'users',
+        url: 'students',
         type: 'GET',
         dataType: 'json',
         contentType: "application/json",
         mimeType: 'application/json',
         data: '',
-        success: function (users) {
-            users ? function () {
-                users.some(function (user) {
+        success: function (students) {
+            $studentsTable.bootstrapTable('load', students);
 
-                    $usersContainer.append('<br><span>' + user.id + ' | ' + user.firstname + ' | ' + user.lastname + ' | ' + user.student.group  + '</span>')
-                });
-            }() : false;
         }
 
     });
+
 
 });

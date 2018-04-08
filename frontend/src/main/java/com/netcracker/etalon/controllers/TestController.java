@@ -64,11 +64,7 @@ public class TestController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    @ResponseBody
-    public List<UserEntity> getUsersAsJson() {
-        return userService.findAllStudents();//Todo create converters for view models
-    }
+
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     @ResponseBody

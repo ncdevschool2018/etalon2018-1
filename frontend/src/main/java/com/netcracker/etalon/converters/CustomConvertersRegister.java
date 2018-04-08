@@ -21,24 +21,33 @@
  * United States of America
  * All rights reserved.
  */
-package com.netcracker.etalon.repository;
+package com.netcracker.etalon.converters;
 
-import com.netcracker.etalon.entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.support.ConversionServiceFactory;
+import org.springframework.core.convert.support.GenericConversionService;
 
-import java.util.List;
+import java.util.Set;
 
-/**
- * @author anpi0316
- *         Date: 27.03.2018
- *         Time: 18:22
- */
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 
-    List<UserEntity> findByUsername(String firstName);
-    List<UserEntity> findByUsernameAndPassword(String firstName, String password);
-    List<UserEntity> findByRole(String role);
+public class CustomConvertersRegister implements InitializingBean {
+
+    @Autowired
+    private GenericConversionService conversionService;
+
+    private Set<?> converters;
+
+    public CustomConvertersRegister() {
+    }
+
+    public void setConverters(Set<?> converters) {
+        this.converters = converters;
+    }
+
+    public void afterPropertiesSet() throws Exception {
+        ConversionServiceFactory.registerConverters(this.converters, this.conversionService);
+    }
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,

@@ -21,24 +21,32 @@
  * United States of America
  * All rights reserved.
  */
-package com.netcracker.etalon.repository;
+package com.netcracker.etalon.converters;
 
-import com.netcracker.etalon.entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import com.netcracker.etalon.entities.SpecialityEntity;
+import com.netcracker.etalon.models.FacultyViewModel;
+import com.netcracker.etalon.models.SpecialityViewModel;
+import com.netcracker.etalon.services.SpecialityService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.converter.Converter;
 
-import java.util.List;
+public class SpecialityEntityToSpecialityViewModelConverter implements Converter<SpecialityEntity, SpecialityViewModel> {
 
-/**
- * @author anpi0316
- *         Date: 27.03.2018
- *         Time: 18:22
- */
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+    @Autowired
+    private ConversionService conversionService;
 
-    List<UserEntity> findByUsername(String firstName);
-    List<UserEntity> findByUsernameAndPassword(String firstName, String password);
-    List<UserEntity> findByRole(String role);
+    @Autowired
+    private SpecialityService specialityService;
+
+    @Override
+    public SpecialityViewModel convert(SpecialityEntity specialityEntity) {
+        SpecialityViewModel specialityViewModel = new SpecialityViewModel();
+        specialityViewModel.setName(specialityEntity.getName());
+        specialityViewModel.setId(String.valueOf(specialityEntity.getId()));
+        specialityViewModel.setFaculty(conversionService.convert(specialityEntity.getFaculty(), FacultyViewModel.class));
+        return specialityViewModel;
+    }
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,

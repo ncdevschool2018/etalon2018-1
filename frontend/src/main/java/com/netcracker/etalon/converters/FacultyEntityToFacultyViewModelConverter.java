@@ -21,24 +21,23 @@
  * United States of America
  * All rights reserved.
  */
-package com.netcracker.etalon.repository;
+package com.netcracker.etalon.converters;
 
-import com.netcracker.etalon.entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import com.netcracker.etalon.entities.FacultyEntity;
+import com.netcracker.etalon.models.FacultyViewModel;
+import org.springframework.core.convert.converter.Converter;
 
-import java.util.List;
 
-/**
- * @author anpi0316
- *         Date: 27.03.2018
- *         Time: 18:22
- */
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+public class FacultyEntityToFacultyViewModelConverter implements Converter<FacultyEntity, FacultyViewModel> {
 
-    List<UserEntity> findByUsername(String firstName);
-    List<UserEntity> findByUsernameAndPassword(String firstName, String password);
-    List<UserEntity> findByRole(String role);
+    @Override
+    public FacultyViewModel convert(FacultyEntity facultyEntity) {
+
+        FacultyViewModel facultyViewModel = new FacultyViewModel();
+        facultyViewModel.setName(facultyEntity.getName());
+        facultyViewModel.setId(String.valueOf(facultyEntity.getId()));
+        return facultyViewModel;
+    }
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,

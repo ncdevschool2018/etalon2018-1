@@ -21,24 +21,42 @@
  * United States of America
  * All rights reserved.
  */
-package com.netcracker.etalon.repository;
-
-import com.netcracker.etalon.entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
-
-import java.util.List;
+package com.netcracker.etalon.models;
 
 /**
  * @author anpi0316
- *         Date: 27.03.2018
- *         Time: 18:22
+ *         Date: 24.10.2017
+ *         Time: 19:50
  */
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+public class SpecialityViewModel {
 
-    List<UserEntity> findByUsername(String firstName);
-    List<UserEntity> findByUsernameAndPassword(String firstName, String password);
-    List<UserEntity> findByRole(String role);
+    private String id;
+    private String name;
+    private FacultyViewModel faculty;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public FacultyViewModel getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(FacultyViewModel faculty) {
+        this.faculty = faculty;
+    }
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,
