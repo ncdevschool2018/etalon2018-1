@@ -37,7 +37,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/test_base?serverTimezone=UTC"/>
         <property name="username" value="root"/>
-        <property name="password" value="ball"/>
+        <property name="password" value="Etalon2018_"/>
     </bean>
 
     <!--Activates various annotations to be detected in bean classes: Spring's @Required and @Autowired and so on-->

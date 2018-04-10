@@ -13,9 +13,10 @@
     <mvc:annotation-driven />
 
     <context:component-scan base-package="com.netcracker.etalon.controllers" />
+    <context:component-scan base-package="com.netcracker.etalon.security" />
     <import resource="classpath:backend-spring-context.xml"/>
     <import resource="web-converters-context.xml"/>
-
+    <import resource="web-security-context.xml"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jsp/"/>

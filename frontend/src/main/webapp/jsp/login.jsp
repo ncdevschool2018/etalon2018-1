@@ -40,13 +40,17 @@
             </div>
 
             <button type="submit" class="btn btn-primary jsSubmitLogin">Submit</button>
-            <br>
-            <div class="alert alert-danger jsCredentialsIncorrectNotification" role="alert" style="display: none">
-                Username or Password is incorrect!
-            </div>
+
+
         </div>
         <div class="col"></div>
     </div>
+    <br>
+    Credentials:
+    <br>
+    role student: username: <b>student</b>, password: <b>student</b>
+    <br>
+    role admin: username: <b>admin</b>, password :<b>admin</b>
     <br>
     <table   data-pagination="true" data-search="true" data-toggle="table" class="jsStudentsTable">
 

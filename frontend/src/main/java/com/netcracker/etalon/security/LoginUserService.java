@@ -21,79 +21,23 @@
  * United States of America
  * All rights reserved.
  */
-package com.netcracker.etalon.models;
-
+package com.netcracker.etalon.security;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import java.util.Collection;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author anpi0316
- *         Date: 11.10.2017
- *         Time: 15:18
+ *         Date: 10.04.2018
  */
-public class StudentViewModel extends UserViewModel {
+public interface LoginUserService {
 
-    private String studentId;
-    private String group;
-    private String specialityName;
-    private String facultyName;
-    private String facultyId;
-    private String specialityId;
+    void authenticateUserAndSetSession(String username, String password, HttpServletRequest request, HttpServletResponse response);
 
-    public StudentViewModel(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-        super(username, password, authorities);
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    public String getSpecialityName() {
-        return specialityName;
-    }
-
-    public void setSpecialityName(String specialityName) {
-        this.specialityName = specialityName;
-    }
-
-    public String getSpecialityId() {
-        return specialityId;
-    }
-
-    public void setSpecialityId(String specialityId) {
-        this.specialityId = specialityId;
-    }
-
-    public String getFacultyName() {
-        return facultyName;
-    }
-
-    public void setFacultyName(String facultyName) {
-        this.facultyName = facultyName;
-    }
-
-    public String getFacultyId() {
-        return facultyId;
-    }
-
-    public void setFacultyId(String facultyId) {
-        this.facultyId = facultyId;
-    }
+    String resolveHomeView(List<GrantedAuthority> authorities);
 }
 /*
  WITHOUT LIMITING THE FOREGOING, COPYING, REPRODUCTION, REDISTRIBUTION,

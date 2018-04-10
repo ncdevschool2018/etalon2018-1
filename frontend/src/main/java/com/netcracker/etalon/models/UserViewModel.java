@@ -1,22 +1,30 @@
 package com.netcracker.etalon.models;
 
-public class UserViewModel {
+import com.netcracker.etalon.security.impl.CustomUser;
+import org.springframework.security.core.GrantedAuthority;
 
-    private String id;
+import java.util.Collection;
+
+public class UserViewModel extends CustomUser {
+
+    private String userId;
     private String firstName;
     private String lastName;
     private String email;
-    private String username;
-    private String role;
-    private String password;
 
-
-    public String getId() {
-        return id;
+    public UserViewModel() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public UserViewModel(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, authorities);
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -41,29 +49,5 @@ public class UserViewModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
