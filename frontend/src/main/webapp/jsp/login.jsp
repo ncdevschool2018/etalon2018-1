@@ -52,11 +52,11 @@
     <br>
     role admin: username: <b>admin</b>, password :<b>admin</b>
     <br>
-    <table   data-pagination="true" data-search="true" data-toggle="table" class="jsStudentsTable">
+    <table data-click-to-select="true"  data-pagination="true" data-search="true" data-toggle="table" class="jsStudentsTable">
 
         <thead>
         <tr>
-            <th data-checkbox="true" class="bs-checkbox"><input name="btSelectAll" type="checkbox"></th>
+            <th data-field="userId" data-checkbox="true"></th>
             <th data-field="firstName">First Name</th>
             <th data-field="lastName">Last Name</th>
             <th data-field="email">Email</th>

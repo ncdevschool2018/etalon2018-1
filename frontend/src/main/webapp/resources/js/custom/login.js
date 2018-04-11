@@ -79,6 +79,10 @@ $(document).ready(function () {
         data: '',
         success: function (students) {
             $studentsTable.bootstrapTable('load', students);
+            $studentsTable.on('click-row.bs.table', function (e, clickedUser) {
+                console.log(clickedUser);
+            });
+
 
         }
 
