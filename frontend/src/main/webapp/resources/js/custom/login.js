@@ -12,7 +12,8 @@ $(document).ready(function () {
         BTN_SUBMIT_LOGIN: '.jsSubmitLogin',
         SEND_DATA_BTN: '.jsSendData',
         STUDENTS_TABLE: '.jsStudentsTable',
-        CONTAINER_ADDED_USER: '.jsAddedUser'
+        CONTAINER_ADDED_USER: '.jsAddedUser',
+        NOTIFICATION_CREDENTIAL_INCORRECT: '.jsCredentialsIncorrectNotification'
     };
 
     var $usersContainer = $(ELEMENTS.CONTAINER_DATA_USING_AJAX),
@@ -21,7 +22,20 @@ $(document).ready(function () {
         $passwordField = $(ELEMENTS.INPUT_PASSWORD),
         $addedUserContainer = $(ELEMENTS.CONTAINER_ADDED_USER),
         $studentsTable = $(ELEMENTS.STUDENTS_TABLE),
-        $sendDataBtn = $(ELEMENTS.SEND_DATA_BTN);
+        $sendDataBtn = $(ELEMENTS.SEND_DATA_BTN),
+        $credentialNotification = $(ELEMENTS.NOTIFICATION_CREDENTIAL_INCORRECT);
+
+    Validation.validateOnEmpty([$usernameField, $passwordField], [$submitButton]);
+
+
+    $usernameField.on('blur', function () {
+        Validation.validateOnEmpty([$usernameField], [$submitButton]);
+    });
+
+    $passwordField.on('blur', function () {
+        Validation.validateOnEmpty([$passwordField], [$submitButton]);
+    });
+
 
     $submitButton.click(function (event) {
         event.stopPropagation();
@@ -31,15 +45,17 @@ $(document).ready(function () {
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify({
-                username: $usernameField.val(),
-                password: $passwordField.val()
+                username: $usernameField.val()/*,
+                password: $passwordField.val()*/
             }),
             success: function (xhr) {
                 console.log(xhr.status);
+                $credentialNotification.hide();
+
                 window.location.href = "/home"
             },
             error: function (xhr, textStatus) {
-                xhr.status == 401 ? alert('Credentials are not correct.'): alert('Something went wrong, try again later.');
+                xhr.status == 401 ? $credentialNotification.show() : alert('Something went wrong, try again later.');
             }
         });
 
@@ -79,7 +95,7 @@ $(document).ready(function () {
         data: '',
         success: function (students) {
             $studentsTable.bootstrapTable('load', students);
-            $studentsTable.on('click-row.bs.table', function (e, clickedUser) {
+            $studentsTable.on('all.bs.table', function (e, clickedUser) {
                 console.log(clickedUser);
             });
 

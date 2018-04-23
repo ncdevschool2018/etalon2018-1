@@ -10,6 +10,7 @@
 <script src="resources/js/libs/popper.js"></script>
 <script src="resources/js/libs/bootstrap.js"></script>
 <script src="resources/js/libs/bootstrap-table.js"></script>
+<script src="resources/js/custom/validation.js"></script>
 <link href="resources/css/libs/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="resources/css/libs/bootstrap-table.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="resources/css/general.css" rel="stylesheet" type="text/css" media="all"/>

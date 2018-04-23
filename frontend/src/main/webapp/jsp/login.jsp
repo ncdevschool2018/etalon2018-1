@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="inputUsername">Username</label>
                 <input name="username" class="form-control jsUsername" id="inputUsername" placeholder="Username">
-                <div class="alert alert-danger jsUsernameIncorrectNotification" role="alert" style="display: none"> <%--todo create class for disabling blocks--%>
+                <div class="alert alert-danger jsUsernameIncorrectNotification" role="alert" style="display: none">
                 </div>
             </div>
             <div class="form-group">
@@ -40,8 +40,11 @@
             </div>
 
             <button type="submit" class="btn btn-primary jsSubmitLogin">Submit</button>
-
-
+            <br>
+            <br>
+            <div class="alert alert-danger jsCredentialsIncorrectNotification" role="alert" style="display: none">
+                Username or Password is incorrect!
+            </div>
         </div>
         <div class="col"></div>
     </div>
