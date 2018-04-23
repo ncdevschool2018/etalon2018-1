@@ -45,8 +45,8 @@ $(document).ready(function () {
             type: 'POST',
             contentType: "application/json",
             data: JSON.stringify({
-                username: $usernameField.val()/*,
-                password: $passwordField.val()*/
+                username: $usernameField.val(),
+                password: $passwordField.val()
             }),
             success: function (xhr) {
                 console.log(xhr.status);
